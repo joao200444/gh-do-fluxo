@@ -1,0 +1,57 @@
+AQUI WASAU
+
+local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/7yhx/kwargs_Ui_Library/main/source.lua"))()
+
+local UI = Lib:Create{
+   Theme = "Dark", -- or any other theme
+   Size = UDim2.new(0, 555, 0, 400) -- default
+}
+
+local Main = UI:Tab{
+   Name = "Main"
+}
+
+local Divider = Main:Divider{
+   Name = "Main shit"
+}
+
+local QuitDivider = Main:Divider{
+   Name = "Quit"
+}
+
+-- Arquivo: custom_mods.lua
+
+-- Vida infinita
+function OnPlayerDamaged(damageAmount)
+    -- Reduz o dano recebido para zero
+    return 0
+end
+
+-- Linhas de direcionamento para monstros
+function OnMonsterSpawned(monster)
+    -- Defina o waypoint para o monstro
+    monster:SetWaypoint(Vector3(100, 0, 200))
+end
+
+-- Aumentar Ona (Ouro)
+function OnPlayerKilledMonster(monster)
+    local player = GetLocalPlayer()
+    player:AddGold(999999999999) -- Adiciona uma grande quantidade de ouro
+end
+
+-- Ativar/desativar script nas teclas P e C
+local scriptAtivado = false
+
+function OnKeyPress(key)
+    if key == "P" then
+        scriptAtivado = not scriptAtivado
+        if scriptAtivado then
+            print("Script ativado (tecla P)")
+        else
+            print("Script desativado (tecla P)")
+        end
+    elseif key == "C" then
+        scriptAtivado = false
+        print("Script desativado (tecla C)")
+    end
+end
